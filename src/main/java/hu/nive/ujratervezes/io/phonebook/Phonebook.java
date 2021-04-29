@@ -16,7 +16,7 @@ public class Phonebook {
         List<String> contactsList = exportContactsToListFromHashMap(contacts);
 
         try  {
-            FileWriter writer = new FileWriter("output.txt");
+            FileWriter writer = new FileWriter(output);
             for(String str: contactsList) {
                 writer.write(str + System.lineSeparator());
             }
