@@ -18,21 +18,12 @@ public class Phonebook {
         List<String> contactsList = exportContactsToListFromHashMap(contacts);
 
         try  {
-            initOutputPathFromString(output);
-
             for (String line : contactsList) {
                 Files.writeString(Path.of(output), line + "\n", StandardOpenOption.APPEND);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    public void initOutputPathFromString(String output) throws IOException {
-        if (Files.exists(Path.of(output))) {
-            Files.delete(Path.of(output));
-            Files.createFile(Path.of(output));
         }
     }
 
