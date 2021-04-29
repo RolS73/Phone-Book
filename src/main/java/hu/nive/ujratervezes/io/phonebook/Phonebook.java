@@ -18,10 +18,7 @@ public class Phonebook {
         List<String> contactsList = exportContactsToListFromHashMap(contacts);
 
         try  {
-            if (Files.exists(Path.of(output))) {
-                Files.delete(Path.of(output));
-                Files.createFile(Path.of(output));
-            }
+            initOutputPathFromString(output);
 
             for (String line : contactsList) {
                 Files.writeString(Path.of(output), line + "\n", StandardOpenOption.APPEND);
@@ -29,6 +26,13 @@ public class Phonebook {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void initOutputPathFromString(String output) throws IOException {
+        if (Files.exists(Path.of(output))) {
+            Files.delete(Path.of(output));
+            Files.createFile(Path.of(output));
         }
     }
 
