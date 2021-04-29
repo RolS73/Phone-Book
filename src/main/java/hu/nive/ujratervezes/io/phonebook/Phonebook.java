@@ -1,9 +1,7 @@
 package hu.nive.ujratervezes.io.phonebook;
 
+import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,9 +16,11 @@ public class Phonebook {
         List<String> contactsList = exportContactsToListFromHashMap(contacts);
 
         try  {
-            for (String line : contactsList) {
-                Files.writeString(Path.of(output), line + "\n", StandardOpenOption.APPEND);
+            FileWriter writer = new FileWriter("output.txt");
+            for(String str: contactsList) {
+                writer.write(str + System.lineSeparator());
             }
+            writer.close();
 
         } catch (IOException e) {
             e.printStackTrace();
