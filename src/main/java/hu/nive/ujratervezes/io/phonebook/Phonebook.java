@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Phonebook {
 
-    public void exportPhonebook(Map<String, String> contacts, String output) throws IOException {
+    public void exportPhonebook(Map<String, String> contacts, String output) {
         if (contacts == null || output == null) {
             throw new IllegalArgumentException();
         }
